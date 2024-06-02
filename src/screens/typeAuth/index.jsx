@@ -1,0 +1,59 @@
+import React, { useState } from 'react';
+import '../../App.css';
+import Login from '../authentification/Login';
+import { Button } from "@/components/ui/button"
+import Signup from '../inscription/Signup';
+const index = () => {
+  const [content, setContent] = useState(null);
+  const [isContentVisible, setIsContentVisible] = useState(false);
+
+  const handleLoginClick = () => {
+    setContent(<Login />);
+    setIsContentVisible(true);
+  };
+
+  const handleRegisterClick = () => {
+    setContent(<Signup />);
+    setIsContentVisible(true);
+  };
+
+  return (
+    <div className="container">
+    {/* Div pour l'image d'arrière-plan floutée */}
+    <div className="background-image blur"></div>
+
+    {/* Contenu net */}
+    <div className={`content ${isContentVisible ? "push-left" : ""}`}>
+      <div className="content-inner">
+        <div style={{ marginTop: '2rem', position: 'static' }}>
+          <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginLeft: '11em', marginTop: '-1em' }}>Welcome</h1>
+          <p style={{ marginLeft: '20em', padding: '2em' }}>This site allows you to make purchases and pay using a QR code.</p>
+        </div>
+        <div style={{ borderRadius: '0.75rem', boxShadow: '2px 2px 4px 1px rgba(0, 0, 0, 0.2)', width: '20em', margin: '5rem auto', padding: '1rem' }}>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '1.5rem' }} className='text-black'>Let's Get Started</p>
+            <p className='text-black'>Connect instantly by scanning and paying.</p>
+          </div>
+          <div className="buttons" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'center' }}>
+            <p className='text-black'>Join now</p>
+            <Button onClick={handleRegisterClick} variant="outline" className="px-4 py-4 w-32 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300">
+              Sign up
+            </Button>
+            <p className='text-black'>Already have an account?</p>
+            <Button onClick={handleLoginClick} variant="outline" className="px-4 py-4 w-32 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300">
+              Login
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {isContentVisible && (
+      <div className="register-content">
+        {content}
+      </div>
+    )}
+  </div>
+);
+};
+
+export default index;
