@@ -7,13 +7,19 @@ import 'react-toastify/dist/ReactToastify.css';
 import ArticlesIndex from './screens/articles/index'; 
 import Inbox from './screens/typeAuth/index';
 
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Inbox />} />
-          <Route path="/articles" element={<ArticlesIndex />} /> 
+          <Route path="/" element={
+          <Inbox />
+          } />
+          <Route path="/articles" element={
+        
+             <ArticlesIndex />
+         } /> 
         </Routes>
       </BrowserRouter>
       <ToastContainer />
