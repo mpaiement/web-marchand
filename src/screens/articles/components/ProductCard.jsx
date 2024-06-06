@@ -5,6 +5,8 @@ import { BodyOne } from "./CustomComponents";
 import { useState } from "react";
 import CardDetails from "../../../modal/CardDetails";  // Importez le nouveau composant
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { CartActions } from "@/redux/slice/cartSlice";
 
 export const RenderRatingStars = (rating) => {
   const totalStars = 5;
@@ -38,6 +40,8 @@ export const ProductCard = ({
   color,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch =useDispatch ()
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -45,6 +49,14 @@ export const ProductCard = ({
     setIsModalOpen(false);
   };
 
+const discountPrice = price[0].value - (price[0].value * discount)/100;
+
+
+const addToCart = () => {
+  dispatch(
+    CartActions.addToCart({id, title, price: discountPrice, images }))
+    console.log("🚀 ~ addToCart ~ id, title, price:", id, title, price)
+};
   return (
     <>
       <div className="product Card ">
@@ -60,12 +72,12 @@ export const ProductCard = ({
             <button onClick={openModal} className="quick-view-btn product-btn primary-btn ">
               Quick View
             </button>
-            <button className="add-to-cart-btn product-btn primary-btn ">
+            <button onClick={addToCart} className="add-to-cart-btn product-btn primary-btn ">
               <IoCart size={23} />
             </button>
-            {/* <button className="love-btn product-btn primary-btn ">
+            <button className="love-btn product-btn primary-btn ">
               <IoMdHeart size={23} />
-            </button> */}
+            </button>
           </div>
         </div>
         <div className="deatils flex items-center flex-col bg-white pt-6">
