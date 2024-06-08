@@ -94,7 +94,7 @@ body {
 }
 
 .background-image {
-  background-image: url(../src/assets/back14.webp);
+  background-image: url(../public/images/hero/bg1.jpg);
   background-size: cover;
   background-position: center;
   position: absolute;
@@ -106,7 +106,7 @@ body {
 }
 
 .background-image.blur {
-  filter: blur(10px);
+  filter: blur(4px);
 }
 
 .content {
@@ -128,22 +128,13 @@ body {
 }
 
 .push-left {
-  margin-left: -25vw; /* Déplacement vers la gauche de 50% de la largeur de l'écran */
+  margin-left: -5vw; /* Déplacement vers la gauche de 50% de la largeur de l'écran */
 }
 
 
 
-.cartoverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-}
 
-.cartmodel {
+/* .cartmodel {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -151,11 +142,30 @@ body {
   background: white;
   z-index: 20;
   transition: all 0.3s ease-in-out;
+} */
+.cartoverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+.cartmodel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background: #fff;
+  z-index: 50;
+  transition: transform 0.3s ease-in-out;
 }
 
 .closing {
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(0.5);
 }
 
 .payment-modal {

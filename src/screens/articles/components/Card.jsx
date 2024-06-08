@@ -238,7 +238,7 @@ const BannerCard = ({ id, title, desc,prices, cover, className, classSecond }) =
 
                     <div className="w-1/2 mt-5">
                           <button onClick={addToCart} className="add-to-cart-btn product-btn primary-btn">
-                        {isAddedToCart ? "Added to Cart" : <IoCart size={23} />}
+                        <IoCart size={23} />
                         </button> 
                     </div>
                 </div>

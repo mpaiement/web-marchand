@@ -4,6 +4,7 @@ import { useState } from "react";
 import { IoCartOutline, IoCloseOutline, IoHeartOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
+import QRCodeModal from '../modal/QrCode'; // Import the QRCodeModal component
 
 export const ModelCart = () => {
     const totalQuantity = useSelector(selectTotalQuantity);
@@ -32,14 +33,12 @@ export const ModelCart = () => {
     const openPaymentModal = async () => {
         try {
             const response = await axios.get(`http://localhost:3000/qrcode/Jwz6jEbVEbOO6IT2YzXyuLk5iqP2/${amount}`);
-            console.log(qrCode)
-            setQrCode(response.data.qrCodeDataURL);
-           
+            setQrCode(response.data);
             setIsPaymentModalOpen(true);
+            closeModel();
         } catch (error) {
             console.error('Failed to generate QR code.', error);
         }
-            // console.log("🚀 ~ openPaymentModal ~ response.data.qrCodeDataURL:", response.data.qrCodeDataURL)
     };
 
     const closePaymentModal = () => {
@@ -85,7 +84,6 @@ export const ModelCart = () => {
                         <div className="total flex items-center justify-between mt-10">
                             <Title level={6}>SubTotal:</Title>
                             <Title level={6}>{amount.toFixed(2)} DA</Title>
-                            
                         </div>
                         <div className="checkout">
                             <button className="primary-btn w-full" onClick={openPaymentModal}>
@@ -97,12 +95,7 @@ export const ModelCart = () => {
             )}
 
             {isPaymentModalOpen && (
-                <div className="payment-modal">
-                    <div className="payment-modal-content">
-                        <img src={qrCode} alt="QR Code" />
-                        <button onClick={closePaymentModal}>Close</button>
-                    </div>
-                </div>
+                <QRCodeModal qrCode={qrCode} closePaymentModal={closePaymentModal} />
             )}
         </>
     );
