@@ -7,6 +7,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md"
 import { ProductCard } from "./ProductCard";
+import { IoCart } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { CartActions } from "@/redux/slice/cartSlice";
+
 function SampleNextArrow(props) {
     const { onClick } = props;
     return (
@@ -97,17 +101,24 @@ return (
 )
 }
 
-export const CardItem =({title, description,prices,colors,image }) => {
-    const [selectedColor , setSelectedColor] = useState(colors[0].value);
+export const CardItem =({id,title, description,prices,colors,image,discount, }) => {
+    const [selectedColor, setSelectedColor] = useState(colors[0].value);
+    const [selectedPrice, setSelectedPrice] = useState(prices.find((price) => price.color === colors[0].value));
+    const [isAddedToCart, setIsAddedToCart] = useState(false); // Nouvel état pour le texte du bouton
+    const dispatch = useDispatch(); // Initialisez useDispatch pour la gestion des actions
 
-    const [selectedPrice , setSelectedPrice] = useState(
-        prices.find((price) => price.color === colors[0].value)
-    );
     const handleColorClick = (color) => {
         const newSelectedPrice = prices.find((price) => price.color === color);
         setSelectedColor(color);
         setSelectedPrice(newSelectedPrice);
     };
+    const discountPrice = 100 ;
+
+    const addToCart = () => {
+        dispatch(CartActions.addToCart({ id, title, price: discountPrice, image }));
+        setIsAddedToCart(true); // Mettez à jour l'état pour changer le texte du bouton
+        console.log("🚀 ~ addToCart ~ id, title, price:", id, title, price);
+      };
     return (
         <>
             <section className="lg:py-[-4] content flex justify-between lg:px- h-[50vh] lg:h-[90vh] relative z-20">
@@ -125,11 +136,11 @@ export const CardItem =({title, description,prices,colors,image }) => {
                         <div>
                             <Caption>Prices </Caption>
                             <div className="mt-3">
-                                <Title level={5}>DA{selectedPrice.value.toFixed(2)}</Title>
+                                <Title level={5}>{discountPrice} DA</Title>
                             </div>
                         </div>
                         <div>
-                        <Caption>Colors</Caption>
+                        {/* <Caption>Colors</Caption>
                       <div className=" flex items-center justify-center gap-3 mt-5">
                         {colors.map((color, i) =>(
                             <div 
@@ -143,12 +154,17 @@ export const CardItem =({title, description,prices,colors,image }) => {
 
                             </div>
                         ))}
-                      </div>
+                      </div> */}
                         </div>
                     </div>
                     <div className="flex items-center gap-8">
-                        <button className="primary-btn uppercase" >View details</button>
-                        <button className="secondary-btn uppercase" >View shop</button>
+                        {/* <button className="primary-btn uppercase" >View details</button> */}
+                        {/* <button className="secondary-btn uppercase" >View shop</button> */}
+
+                        <button onClick={addToCart} className="add-to-cart-btn product-btn primary-btn">
+                        {isAddedToCart ? "Added to Cart" : <IoCart size={23} />}
+                        </button>  
+
                     </div>
                 </div>
                
@@ -164,6 +180,8 @@ export const CardItem =({title, description,prices,colors,image }) => {
         </>
     )
     }
+
+
 
 const Banner = () => {
     return(
@@ -185,29 +203,52 @@ classSecond={true}/>
     )
 };
 
-const BannerCard = ({title, desc, cover, className, classSecond }) => {
-    return(
+const BannerCard = ({ id, title, desc,prices, cover, className, classSecond }) => {
+    const [isAddedToCart, setIsAddedToCart] = useState(false); // Nouvel état pour le texte du bouton
+    const dispatch = useDispatch(); // Initialisez useDispatch pour la gestion des actions
+
+    const discountPrice = 100 ;
+
+    const addToCart = () => {
+        dispatch(CartActions.addToCart({ id, title, price: discountPrice }));
+        setIsAddedToCart(true); // Mettez à jour l'état pour changer le texte du bouton
+        console.log("🚀 ~ addToCart ~ id, title, price:", id, title, price);
+      };
+
+    return (
         <>
-        <div className="w-full h-full relative">
-            <img src={cover} alt="" />
-            <div
-             className={`${
-                className 
-                ? "absolute bottom-0 p-8 w-full"
-                 :"flex absolute bottom-0 p-8 w-full "
-                 } ${className && classSecond ? "left-0 lg:left-48 top-0 w-96" :""}`}>
-<div>
-    <Title level={2}> {title}</Title>
-    <p className="text-lg font-normal leading-none">{desc}</p>
-</div>
-<div className="w-1/2 mt-5">
-    <button className="secondary-btn flex justify-end ">shop now</button>
-</div>
+            <div className="w-full h-full relative">
+                <img src={cover} alt="" />
+                <div
+                    className={`${
+                        className
+                            ? "absolute bottom-0 p-8 w-full"
+                            : "flex absolute bottom-0 p-8 w-full "
+                    } ${className && classSecond ? "left-0 lg:left-48 top-0 w-96" : ""}`}>
+                    <div>
+                        <Title level={2}>{title}</Title>
+                        <p className="text-lg font-normal leading-none">{desc}</p>
+                    </div>
+                    <div>
+                            <Caption>Prices </Caption>
+                            <div className="mt-3">
+                                <Title level={5}>{discountPrice} DA</Title>
+                            </div>
+                        </div>
+
+                    <div className="w-1/2 mt-5">
+                          <button onClick={addToCart} className="add-to-cart-btn product-btn primary-btn">
+                        {isAddedToCart ? "Added to Cart" : <IoCart size={23} />}
+                        </button> 
+                    </div>
+                </div>
             </div>
-        </div>
         </>
-    )
+    );
 };
+
+
+
     CardItem.propTypes = {
         title: PropTypes.isRequired,
         description: PropTypes.isRequired,

@@ -75,9 +75,9 @@ const addToCart = () => {
             <button onClick={addToCart} className="add-to-cart-btn product-btn primary-btn ">
               <IoCart size={23} />
             </button>
-            <button className="love-btn product-btn primary-btn ">
+            {/* <button className="love-btn product-btn primary-btn ">
               <IoMdHeart size={23} />
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="deatils flex items-center flex-col bg-white pt-6">

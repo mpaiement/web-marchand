@@ -73,7 +73,7 @@ if (menuRef.current && !menuRef.current.contains(event.target)){
      <CustomLink>Register</CustomLink>   
     </div> */}
 <div className="icon flex items-center justify-center gap-6">
-<IoIosSearch size={23} />
+{/* <IoIosSearch size={23} /> */}
 <ModelCart/>
 
 </div>
