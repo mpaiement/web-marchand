@@ -3,11 +3,12 @@ import LogoImg from "../../../assets/common/logo.png"
 import React, { useEffect, useRef, useState } from 'react';
 import { CustomNavLink } from "./CustomComponents";
 import { IoIosSearch } from "react-icons/io"; 
-
+import { useAuth } from '../../AuthContext';
 import { ModelCart } from "@/modal/Panier";
 
 
 export const Header = () => {
+    const { currentUser, handleLogout } = useAuth();
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const menuRef = useRef(null);
@@ -74,6 +75,9 @@ if (menuRef.current && !menuRef.current.contains(event.target)){
     </div> */}
 <div className="icon flex items-center justify-center gap-6">
 {/* <IoIosSearch size={23} /> */}
+ <button onClick={handleLogout} className="uppercase hidden lg:block text-inherit relative z-20">
+                Logout
+              </button>
 <ModelCart/>
 
 </div>

@@ -32,7 +32,7 @@ const index = () => {
           <p style={{ marginLeft: 'em', padding: '1em',fontSize: '1.4rem'}} className='text-black '>This site allows you to make</p>
           <p style={{ padding: 'em',fontSize: '1.4rem'}} className='text-black '>purchases and pay using a QR code.</p>
         </div>
-        <div style={{ borderRadius: '0.75rem', boxShadow: '2px 2px 4px 9px rgba(0, 0, 0, 0.5)', width: '20em', margin: '5rem auto', padding: '1rem', }}>
+        <div style={{ borderRadius: '0.75rem', boxShadow: '2px 2px 4px 9px rgba(0, 0, 0, 0.5)', width: '20em', margin: '5rem auto', padding: '1rem',backgroundColor:'white' }}>
           <div style={{ textAlign: 'center' }}>
             <p style={{ fontSize: '1.5rem' }} className='text-black'>Let's Get Started</p>
             <p className='text-black'>Connect instantly by scanning and paying.</p>

@@ -16,7 +16,7 @@ export const menulists = [
   // },
   {
     id: 4,
-    path: "/about",
+     path: "/aboutus",
     link: "about",
   },
   // {
@@ -24,11 +24,11 @@ export const menulists = [
   //   path: "/services",
   //   link: "Services",
   // },
-  {
-    id: 6,
-    path: "/contact",
-    link: "Contact",
-  },
+  // {
+  //   id: 6,
+  //   path: "/contact",
+  //   link: "Contact",
+  // },
 ];
 
 export const herolist = [
