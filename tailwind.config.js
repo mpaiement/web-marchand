@@ -18,15 +18,20 @@ module.exports = {
     },
     extend: {
       colors: {
+        primary: "#24262b",
+        "primary-gray": "#5e626f;",
+        "primary-green": "#0D775E;",
+        "red-gray": "#444444",
+        "white-100": "#F3F3F3",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
+        // primary: {
+        //   DEFAULT: "hsl(var(--primary))",
+        //   foreground: "hsl(var(--primary-foreground))",
+        // },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
