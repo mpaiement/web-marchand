@@ -32,7 +32,7 @@ export const ModelCart = () => {
 
     const openPaymentModal = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/qrcode/Jwz6jEbVEbOO6IT2YzXyuLk5iqP2/${amount}`);
+            const response = await axios.get(`http://localhost:3000/qrcode/6e1ecfd7-6d36-444e-983d-e557c99e2450/${amount}`);
             setQrCode(response.data);
             setIsPaymentModalOpen(true);
             closeModel();
@@ -102,6 +102,8 @@ export const ModelCart = () => {
 };
 
 export const CartProduct = ({ id, cover, title, price, quantity }) => {
+    console.log("🚀 ~ CartProduct ~ id, cover, title, price, quantity :", id, cover, title, price, quantity )
+    
     const dispatch = useDispatch();
 
     const removeCartItems = () => {

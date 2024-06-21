@@ -17,6 +17,9 @@ const AboutUs = () => {
 </p>
 
   </div>
+  <div>
+  < Footer />
+  </div>
 </div>
 
 </div>
@@ -24,6 +27,7 @@ const AboutUs = () => {
       
       <style>
         {`body {
+        height: 100%;
             overflow-x: hidden;
             background-color:#fffaf5;
             // background-image: url
@@ -39,7 +43,7 @@ const AboutUs = () => {
             width: 100%;
             margin-bottom:10%;
             margin-right:auto;
-            margin-left:40vh;
+            margin-left:90vh;
             }
             span{
                 font-weight:bold;
@@ -51,12 +55,13 @@ const AboutUs = () => {
             margin-top:20vh;
             margin-bottom:80vh;
             // margin-right:10vw;
-             margin-left:90vh;
+             margin-left:100vh;
             }
             .image1{
              width:50%;
-             height:65vh;
+            //  height:65vh;
              margin-top:30vh;
+
             }
             .about-us-text p {
                 font-size: 18px;
@@ -91,7 +96,7 @@ const AboutUs = () => {
             
             `}
                 </style>
-                <Footer />
+               
     </div>
   );
 };
