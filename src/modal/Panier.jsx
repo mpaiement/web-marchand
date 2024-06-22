@@ -1,4 +1,4 @@
-import { CartActions, selecttotalPrice, selectTotalQuantity } from "@/redux/slice/cartSlice"; 
+import { CartActions, selecttotalPrice, selectTotalQuantity } from "@/redux/slice/cartSlice";
 import { Badges, BodyOne, Title } from "@/screens/articles/components/CustomComponents";
 import { useState } from "react";
 import { IoCartOutline, IoCloseOutline, IoHeartOutline } from "react-icons/io5";
@@ -32,9 +32,11 @@ export const ModelCart = () => {
 
     const openPaymentModal = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/qrcode/6e1ecfd7-6d36-444e-983d-e557c99e2450/${amount}`);
-            setQrCode(response.data);
+            const response = await axios.get(`http://192.168.1.43:3000/qrcode/TIijZuSg2YfXvx2pwuLTWA1kjeQ2/${amount}`);
+
+            setQrCode(response.data.qrCode);
             setIsPaymentModalOpen(true);
+
             closeModel();
         } catch (error) {
             console.error('Failed to generate QR code.', error);
@@ -102,8 +104,8 @@ export const ModelCart = () => {
 };
 
 export const CartProduct = ({ id, cover, title, price, quantity }) => {
-    console.log("🚀 ~ CartProduct ~ id, cover, title, price, quantity :", id, cover, title, price, quantity )
-    
+    console.log("🚀 ~ CartProduct ~ id, cover, title, price, quantity :", id, cover, title, price, quantity)
+
     const dispatch = useDispatch();
 
     const removeCartItems = () => {
