@@ -204,6 +204,7 @@ classSecond={true}/>
 };
 
 const BannerCard = ({ id, title, desc,prices, cover, className, classSecond }) => {
+    console.log("🚀 ~ BannerCard ~  id, title, desc,prices, cover, className, classSecond :",  id, title, desc,prices, cover, className, classSecond )
     const [isAddedToCart, setIsAddedToCart] = useState(false); // Nouvel état pour le texte du bouton
     const dispatch = useDispatch(); // Initialisez useDispatch pour la gestion des actions
 
