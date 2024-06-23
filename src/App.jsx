@@ -21,8 +21,8 @@ function App() {
             <Route path="/" element={<Inbox />} />
             <Route path="/admin-login" element={<LoginAdmin />} />
             <Route path='/dashboard/' element={<Layout />}>
-              <Route index element={<Dashboard />} />
-              <Route path='/dashboard/Transactions' element={<Transactions />} />
+              <Route index element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+              <Route path='/dashboard/Transactions' element={<ProtectedRoute><Transactions /></ProtectedRoute>} />
             </Route>
 
             <Route

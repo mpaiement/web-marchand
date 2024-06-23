@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import logo from '../../../assets/common/logo.png';
-import Avatar from './avatar';
+import Avatar from './avatar'
+import { useAuth } from '@/screens/AuthContext';
+
 const Navbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const { currentUser, handleLogout } = useAuth();
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -61,6 +64,9 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+        <button onClick={handleLogout} className="uppercase lg:block text-inherit relative z-20">
+          Logout
+        </button>
         <Avatar />
       </nav>
     </div>
