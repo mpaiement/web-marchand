@@ -3,7 +3,7 @@ import Sidebar from '../components/sidebar';
 import { Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
-  const [merchantName, setMerchantName] = useState('Leaty'); // Remplacez par le nom réel du marchand
+  const [merchantName, setMerchantName] = useState('PureWood'); // Remplacez par le nom réel du marchand
   const [amount, setAmount] = useState(null); // État pour stocker le montant récupéré de l'API
 
   useEffect(() => {

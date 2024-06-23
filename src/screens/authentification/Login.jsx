@@ -16,26 +16,26 @@ const Login = () => {
     try {
       // Authentifier l'utilisateur avec l'e-mail et le mot de passe
       await signInWithEmailAndPassword(auth, email, password);
-     
+
       console.log("🚀 ~ handleLogin ~ email:", email)
-      navigate('/articles'); 
+      navigate('/articles');
     } catch (error) {
       // Gérer les erreurs d'authentification
       setError(error.message);
     }
-     
+
   };
 
   return (
-    <div className="bg-white ml-20 rounded-lg shadow-lg p-6 w-80">
+    <div className="bg-white w-4/5 rounded-lg shadow-lg p-6">
       <h2 className="text-xl font-bold mb-4 text-black">Login</h2>
       <form className="space-y-4" onSubmit={handleLogin}>
         <div>
-          <label className="block mb-1 text-black">Email</label>
+          <label className="block mb-1 text text-black">Email</label>
           <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} className="text-black border border-gray-300 rounded-md w-full py-2 px-3 focus:outline-none focus:border-black" />
         </div>
         <div>
-          <label className="block mb-1 text-black text-black">Password</label>
+          <label className="block mb-1 text-black">Password</label>
           <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} className="text-black border border-gray-300 rounded-md w-full py-2 px-3 focus:outline-none focus:border-black" />
         </div>
         {error && <div className="text-red-500">{error}</div>}
@@ -46,3 +46,4 @@ const Login = () => {
 };
 
 export default Login;
+
