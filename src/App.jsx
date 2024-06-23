@@ -7,6 +7,11 @@ import Inbox from './screens/typeAuth/index';
 import { AuthProvider } from './screens/AuthContext';
 import ProtectedRoute from './screens/ProtectedRoute';
 import AboutUss from './screens/AboutUss';
+import Login from './screens/authentification/Login';
+import Layout from './screens/dashboard/pages/layout';
+import Transactions from './screens/dashboard/pages/transactions';
+import Dashboard from './screens/dashboard/pages/dashboard';
+import LoginAdmin from './screens/dashboard/pages/loginAdmin';
 function App() {
   return (
     <div className="App">
@@ -14,6 +19,12 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Inbox />} />
+            <Route path="/admin-login" element={<LoginAdmin />} />
+            <Route path='/dashboard/' element={<Layout />}>
+              <Route index element={<Dashboard />} />
+              <Route path='/dashboard/Transactions' element={<Transactions />} />
+            </Route>
+
             <Route
               path="/articles"
               element={
@@ -22,13 +33,13 @@ function App() {
                 </ProtectedRoute>
               }
             />
-             <Route path="/aboutus" element={<AboutUss />} />
-            
+            <Route path="/aboutus" element={<AboutUss />} />
+
           </Routes>
         </BrowserRouter>
         <ToastContainer />
       </AuthProvider>
-   
+
 
     </div>
   );

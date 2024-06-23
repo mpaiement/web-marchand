@@ -4,31 +4,11 @@ export const menulists = [
     path: "/articles",
     link: "home",
   },
-  // {
-  //   id: 2,
-  //   path: "/shop",
-  //   link: "Shop",
-  // },
-  // {
-  //   id: 3,
-  //   path: "/blog",
-  //   link: "Blog",
-  // },
   {
     id: 4,
-     path: "/aboutus",
+    path: "/aboutus",
     link: "about",
   },
-  // {
-  //   id: 5,
-  //   path: "/services",
-  //   link: "Services",
-  // },
-  // {
-  //   id: 6,
-  //   path: "/contact",
-  //   link: "Contact",
-  // },
 ];
 
 export const herolist = [
